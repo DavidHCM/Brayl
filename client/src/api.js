@@ -1,5 +1,7 @@
+const BASE = import.meta.env.VITE_API_URL ?? '';
+
 export async function translateText(text) {
-  const res = await fetch('/api/translate', {
+  const res = await fetch(`${BASE}/api/translate`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text }),
@@ -12,7 +14,7 @@ export async function translateText(text) {
 export async function uploadFile(file) {
   const form = new FormData();
   form.append('file', file);
-  const res = await fetch('/api/upload', {
+  const res = await fetch(`${BASE}/api/upload`, {
     method: 'POST',
     body: form,
   });

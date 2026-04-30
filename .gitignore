@@ -8,6 +8,8 @@ client/dist/
 # Environment
 .env
 .env.local
+client/.env
+client/.env.local
 
 # OS
 .DS_Store

@@ -1,5 +1,4 @@
 require('dotenv').config();
-const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
@@ -8,16 +7,13 @@ const { extractText } = require('./utils/fileParser');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const isProd = process.env.NODE_ENV === 'production';
 
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 10 * 1024 * 1024 },
 });
 
-if (!isProd) {
-  app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
-}
+app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
 
 app.use(express.json({ limit: '1mb' }));
 
@@ -48,12 +44,6 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
   }
 });
 
-if (isProd) {
-  const distDir = path.join(__dirname, '../client/dist');
-  app.use(express.static(distDir));
-  app.get('*', (_req, res) => res.sendFile(path.join(distDir, 'index.html')));
-}
-
 app.listen(PORT, () => {
-  console.log(`Brayl server corriendo en http://localhost:${PORT} [${isProd ? 'production' : 'development'}]`);
+  console.log(`Brayl server corriendo en http://localhost:${PORT}`);
 });
