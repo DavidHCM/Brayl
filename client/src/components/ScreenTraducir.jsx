@@ -64,7 +64,7 @@ export default function ScreenTraducir({ fs, setScreen }) {
   return (
     <main id="main" className="main-scroll">
       <BlobBg />
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: 1020, margin: '0 auto', padding: '40px 40px 60px' }}>
+      <div className="layout-lg">
 
         <header style={{ marginBottom: 36 }}>
           <p className="t-label" style={{ marginBottom: 10 }}>Español Mexicano → Braille Mexicano · Grado 1</p>
@@ -74,7 +74,7 @@ export default function ScreenTraducir({ fs, setScreen }) {
           </h1>
         </header>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+        <div className="grid-2col">
 
           {/* INPUT */}
           <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -176,7 +176,7 @@ export default function ScreenTraducir({ fs, setScreen }) {
         </div>
 
         <div
-          style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 18, padding: '18px 26px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', cursor: 'pointer' }}
+          className="file-strip"
           onClick={() => setScreen('archivos')}
           role="button"
           tabIndex={0}

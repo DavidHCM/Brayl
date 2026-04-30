@@ -51,7 +51,7 @@ export default function ScreenArchivos({ fs }) {
   return (
     <main id="main" className="main-scroll">
       <BlobBg />
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: 800, margin: '0 auto', padding: '40px 40px 60px' }}>
+      <div className="layout-md">
 
         <header style={{ marginBottom: 36 }}>
           <p className="t-label" style={{ marginBottom: 10 }}>Documentos</p>
@@ -116,27 +116,29 @@ export default function ScreenArchivos({ fs }) {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {history.map(item => (
-                <div key={item.id} className="card anim-fade-up" style={{ padding: '16px 22px', display: 'flex', alignItems: 'center', gap: 14 }}>
+                <div key={item.id} className="card history-row anim-fade-up">
                   <IconFile s={20} />
-                  <div style={{ flex: 1 }}>
-                    <p style={{ fontWeight: 600, fontSize: 14 }}>{item.name}</p>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{ fontWeight: 600, fontSize: 14, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.name}</p>
                     <p className="t-small">{item.date} · {item.size}</p>
                   </div>
                   <span className="tag"><IconCheck s={11} /> Listo</span>
-                  <button
-                    className="btn-ghost"
-                    onClick={() => handleDl(item, 'brl')}
-                    aria-label={`Descargar ${item.name} en braille BRL`}
-                  >
-                    <IconDl s={13} /> .brl
-                  </button>
-                  <button
-                    className="btn-ghost"
-                    onClick={() => handleDl(item, 'txt')}
-                    aria-label={`Descargar ${item.name} en texto`}
-                  >
-                    <IconDl s={13} /> .txt
-                  </button>
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    <button
+                      className="btn-ghost"
+                      onClick={() => handleDl(item, 'brl')}
+                      aria-label={`Descargar ${item.name} en braille BRL`}
+                    >
+                      <IconDl s={13} /> .brl
+                    </button>
+                    <button
+                      className="btn-ghost"
+                      onClick={() => handleDl(item, 'txt')}
+                      aria-label={`Descargar ${item.name} en texto`}
+                    >
+                      <IconDl s={13} /> .txt
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>

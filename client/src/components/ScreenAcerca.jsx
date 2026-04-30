@@ -21,9 +21,9 @@ export default function ScreenAcerca({ fs }) {
   return (
     <main id="main" className="main-scroll">
       <BlobBg />
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: 760, margin: '0 auto', padding: '40px 40px 60px' }}>
+      <div className="layout-sm">
 
-        <header style={{ textAlign: 'center', marginBottom: 60 }}>
+        <header style={{ textAlign: 'center', marginBottom: 52 }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
             <LogoBlob size={88} />
           </div>
@@ -39,7 +39,7 @@ export default function ScreenAcerca({ fs }) {
 
         <section aria-labelledby="como-h" style={{ marginBottom: 52 }}>
           <p className="t-label" id="como-h" style={{ textAlign: 'center', marginBottom: 28 }}>Cómo funciona</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+          <div className="grid-3col">
             {STEPS.map((s, i) => (
               <div key={i} className="card">
                 <DotCell pattern={s.dots} />
